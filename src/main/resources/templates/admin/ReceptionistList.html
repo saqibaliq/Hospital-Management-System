@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Doctor List</title>
+</head>
+<body>
+	<section>
+
+		<div class="container">
+			<h1 style="text-align: center;">Receptionist List</h1>
+			<hr>
+			<br>
+			<form th:action="@{'/admin/search_receptionist/'+${page}}"
+				method="post" class="form-inline">
+				<label for="lastname"
+					style="text-transform: uppercase; font-weight: bold;">Last
+					Name :</label> <input type="text" id="lastname"
+					placeholder="Enter Last Name" name="lastname" style="width: 300px">
+				<label for="email"
+					style="text-transform: uppercase; font-weight: bold;">Email
+					:</label> <input type="text" id="email" placeholder="Enter Email"
+					name="email" style="width: 300px">
+				<button>Search</button>
+				<button type="reset">Reset</button>
+
+			</form>
+			<br> <br>
+			<div class="table-responsive">
+
+				<div th:if="${session.error}" th:classappend="${session.error.type}"
+					class="alert alert-dismissible fade show" role="alert">
+					<strong th:text="${session.error.content}" class="text-center"></strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+					<th:block th:text="${#session.removeAttribute('error')}"></th:block>
+				</div>
+				<form action="" th:action="@{'/admin/deleteReceptionist/'+${page}}"
+					method="post">
+					<table class="table">
+
+						<thead>
+
+							<tr>
+								<th scope="col"><input type="checkbox"
+									onclick="toggle(this)" name="cball" class='checkall'>Select
+									All</th>
+								<th scope="col">First Name</th>
+								<th scope="col">Last Name</th>
+								<th scope="col">Mobile No</th>
+								<th scope="col">Email</th>
+								<th scope="col">City</th>
+								<th scope="col">Address</th>
+								<th scope="col">Edit</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="r : ${receptionist}">
+
+								<td scope="row"><input type="checkbox" name="cb"
+									th:value="${r.Id}"></td>
+
+								<!-- <td><span th:text="${doc.Id}"></span></td> -->
+								<td><span th:text="${r.FirstName}"></span></td>
+								<td><span th:text="${r.LastName}"></span></td>
+								<td><span th:text="${r.Phone_Number}"></span></td>
+								<td><span th:text="${r.Email}"></span></td>
+								<td><span th:text="${r.City}"></span></td>
+								<td><span th:text="${r.address}"></span></td>
+								<td><a th:href="@{'/admin/update_receptionist/'+${r.Id}}"><button
+											type="button" class="btn btn-primary">Edit</button></a></td>
+
+							</tr>
+						</tbody>
+
+					</table>
+
+
+					<!-- <div th:each="d : ${doctor}">
+						<input type="hidden" name="cb" th:value="${d.Id}" />
+					</div> -->
+
+					<button type="submit" class="btn btn-warning"
+						style="margin-bottom: 5%; margin-left: 1%;">Delete</button>
+
+
+
+				</form>
+			</div>
+
+			<nav aria-label="Page navigation example"
+				style="margin-bottom: 20% !important;">
+
+				<ul class="pagination">
+
+					<li th:if="${currentPage != 0}" class="page-item"><a
+						th:href="@{'/admin/doctor_list/'+${currentPage-1}}"
+						class="page-link" style="background: #810034; color: white;"
+						href="#">Previous</a></li>
+					<!-- <li th:classappend="${currentPage == i-1?'active':''}"
+						th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a
+						th:href="@{'/admin/doctor_list/'+${i-1}}" class="page-link"
+						style="background: #810034; color: white;" href="#"><span
+							th:text="${i}"></span></a></li> -->
+
+					<li th:if="${currentPage+1 != totalPages}" class="page-item"><a
+						th:href="@{'/admin/doctor_list/'+${currentPage+1}}"
+						class="page-link" style="background: #810034; color: white;"
+						href="#">Next</a></li>
+
+				</ul>
+
+			</nav>
+
+		</div>
+
+	</section>
+</body>
+</html>

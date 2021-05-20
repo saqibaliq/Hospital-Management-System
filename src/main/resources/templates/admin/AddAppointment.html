@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Appointment</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="container text-center">
+			<br>
+
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}"
+				class="alert alert-dismissible fade show" role="alert">
+				<strong th:text="${session.message.content}" class="text-center"></strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+			<!-- <div th:if="${session.emailmessage}"
+				th:classappend="${session.emailmessage.type}"
+				class="alert alert-dismissible fade show" role="alert">
+				<strong th:text="${session.emailmessage.content}"
+					class="text-center"></strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+				<th:block th:text="${#session.removeAttribute('emailmessage')}"></th:block>
+			</div> -->
+			<h5 class="card-header" style="background: black; color: white;">Appointment</h5>
+			<br>
+			<form th:action="@{/admin/addAppointment}" method="post"
+				th:object="${appointment}">
+
+				<div class="input-group">
+					<div class="input-group">
+
+						<input type="text" name="FirstName" class="form-control"
+							placeholder="First Name" /> <span class="input-group-addon">-</span>
+						<input type="text" name="LastName" class="form-control"
+							placeholder="Last Name" />
+					</div>
+					<div class="input-group" style="margin-top: 10px;">
+						<input type="email" class="form-control" name="Email"
+							placeholder="Email Address" />
+					</div>
+					<div class="input-group" style="margin-top: 10px;">
+
+						<input type="number" class="form-control" name="Phone_Number"
+							placeholder="Mobile Number" /> <span class="input-group-addon">-</span>
+						<select class="form-control" name="Doctor_Name">
+							<option selected="selected" disabled="disabled">****SELECT
+								DOCTOR****</option>
+							<option th:each="doctors : ${Doctors}"
+								th:value="${doctors.UserName}" th:text="${doctors.UserName}">xyz</option>
+
+						</select>
+					</div>
+					<div class="input-group" style="margin-top: 10px;">
+
+						<input type="date" class="form-control" name="Appointment_Date"
+							placeholder="Appointment Date" /> <span
+							class="input-group-addon">-</span> <input type="time"
+							name="Appointment_Time" class="form-control" />
+					</div>
+
+
+					<div class="container">
+						<button type="submit" class="btn btn-warning w-100 fixed_button">SAVE</button>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+
+	</section>
+</body>
+</html>

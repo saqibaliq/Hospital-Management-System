@@ -1,0 +1,124 @@
+.navbar {
+	background-color: white !important;
+	color: gray;
+	width: 100%!important;
+}
+
+#hms {
+	padding: 20px;
+	font-weight: bold;
+	color: black;
+}
+
+body {
+	background-color: #f3f4ed !important;
+}
+
+.nav-item {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.title {
+	font-weight: bold;
+	margin-top: 60px;
+}
+
+.smalltitle {
+	font-weight: lighter;
+}
+
+.smallbox {
+	margin-top: 3%;
+	width: 50%;
+	height: auto;
+	background: white !important;
+	left: 0;
+	position: relative;
+	margin-left: 9%;
+}
+
+#login .container #login-row #login-column #login-box {
+	margin-top: 100px;
+	max-width: 600px;
+	height: 300px;
+	border: 1px solid #9C9C9C;
+	background-color: #FAFAFA;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+	padding: 20px;
+}
+
+#login .container #login-row #login-column #login-box #login-form #register-link
+	{
+	margin-top: -85px;
+}
+
+.footer {
+	position: fixed !important;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: white;
+	color: black;
+	text-align: center;
+}
+
+.fixed_button {
+	position: relative !important;
+	margin: 10px;
+}
+/* Style the form - display items horizontally */
+.form-inline {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+}
+
+/* Add some margins for each label */
+.form-inline label {
+	margin: 5px 10px 5px 0;
+}
+
+/* Style the input fields */
+.form-inline input {
+	vertical-align: middle;
+	margin: 5px 10px 5px 0;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+.form-inline select {
+	vertical-align: middle;
+	margin: 5px 10px 5px 0;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+/* Style the submit button */
+.form-inline button {
+	padding: 10px 20px;
+	background-color: dodgerblue;
+	border: 1px solid #ddd;
+	color: white;
+}
+
+.form-inline button:hover {
+	background-color: royalblue;
+}
+
+/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+@media ( max-width : 800px) {
+	.form-inline input {
+		margin: 10px 0;
+	}
+	.form-inline select {
+		margin: 10px 0;
+	}
+	.form-inline {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	
+}

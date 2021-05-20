@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap Css -->
+<!-- CSS only -->
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<title th:text="${title}">Base</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a id="hms" class="navbar-brand" href="#">HOSPITAL MANAGEMENT
+				SYSTEM</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" style="margin-right: 10%;"
+				id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">HOME</a></li>
+					<li class="nav-item dropdown"><a class="nav-link " href="#"
+						id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> DOCTOR </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="border: none !important;">
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/add_doctor}">Add Doctor</a></li>
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/doctor_list/0}">Doctor List</a></li>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a class="nav-link " href="#"
+						id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> RECEPTIONIST </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="border: none !important;">
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/add_receptionist}">Add Receptionist</a></li>
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/receptionist_list/0}">Receptionist List</a></li>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a class="nav-link " href="#"
+						id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> PATIENT </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="border: none !important;">
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/add_patient}">Add Patient</a></li>
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/patient_list/0}">Patient List</a></li>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a class="nav-link" href="#"
+						id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> APPOINTMENT </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="border: none !important;">
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/add_appointment}">Add Appointment</a></li>
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/appointment_list/0}">Appointment List</a></li>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a class="nav-link" href="#"
+						id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+							<h6 th:text="${name}"
+								style="color: green; text-transform: uppercase;"></h6>
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="border: none !important;">
+							<li><a class="dropdown-item" href="#"
+								th:href="@{/admin/profile}">My Profile</a></li>
+							<li><a class="dropdown-item" href="#">Change Password</a></li>
+							<li><a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a></li>
+						</ul></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<!-- DYNAMIC CONTENT -->
+	<div th:replace="${content}"></div>
+	<div class="footer">
+		<p>&copy Copy Right All Right's Reserved.</p>
+	</div>
+	<!-- JavaScript Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

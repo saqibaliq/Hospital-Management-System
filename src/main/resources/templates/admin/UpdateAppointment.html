@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="admin/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Appointment</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="container text-center">
+			<br>
+
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}"
+				class="alert alert-dismissible fade show" role="alert">
+				<strong th:text="${session.message.content}" class="text-center"></strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+			<h5 class="card-header" style="background: black; color: white;">Edit
+				Appointment</h5>
+			<br>
+			<form th:action="@{/admin/updateAppointment}" method="post"
+				th:object="${appointment}">
+
+				<div class="input-group">
+					<div class="input-group">
+						<input type="hidden" name="Id" th:value="${appointment.Id}"
+							class="form-control" placeholder="User Id" /> <input type="text"
+							name="FirstName" th:value="${appointment.FirstName}"
+							class="form-control" placeholder="First Name" /> <span
+							class="input-group-addon">-</span> <input type="text"
+							name="LastName" th:value="${appointment.LastName}"
+							class="form-control" placeholder="Last Name" />
+					</div>
+
+
+					<div class="input-group" style="margin-top: 10px;">
+
+						<input type="number" class="form-control" name="Phone_Number"
+							th:value="${appointment.Phone_Number}"
+							placeholder="Mobile Number" /> <select class="form-control"
+							th:field="*{Doctor_Name}" name="Doctor_Name">
+							<option value="default" selected="selected" disabled="disabled">****SELECT
+								DOCTOR****</option>
+							<option th:each="doctors : ${Doctors}"
+								th:value="${doctors.UserName}" th:text="${doctors.UserName}">xyz</option>
+
+						</select>
+					</div>
+					<div class="input-group" style="margin-top: 10px;">
+
+						<input type="date" class="form-control" name="Appointment_Date"
+							th:value="${appointment.Appointment_Date}"
+							placeholder="Appointment Date" /> <span
+							class="input-group-addon">-</span> <input type="time"
+							th:value="${appointment.Appointment_Time}"
+							name="Appointment_Time" class="form-control" />
+					</div>
+					<div class="container">
+						<button type="submit" class="btn btn-warning w-100 fixed_button">Update</button>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+
+	</section>
+</body>
+</html>
